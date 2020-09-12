@@ -15,8 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', 'Auth\LoginController@logout');
+    Route::apiResource('users', 'Auth\UserController');
+    Route::apiResource('clientes', 'ClienteController');
 
     Route::get('/user', 'Auth\UserController@current');
+    Route::get('/roles', 'Auth\UserController@roles');
 
     Route::patch('settings/profile', 'Settings\ProfileController@update');
     Route::patch('settings/password', 'Settings\PasswordController@update');

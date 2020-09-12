@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Settings;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 
-class PasswordController extends Controller
+class PasswordController extends AppBaseController
 {
     /**
      * Update the user's password.
@@ -22,5 +22,6 @@ class PasswordController extends Controller
         $request->user()->update([
             'password' => bcrypt($request->password),
         ]);
+        return $this->sendSuccess('contrasena actualizada');
     }
 }

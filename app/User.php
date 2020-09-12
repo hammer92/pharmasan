@@ -19,7 +19,7 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'roles_id',
     ];
 
     /**
@@ -104,5 +104,24 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    /**
+     * Devuelve todas las imagenes del stand.
+     */
+    public function permisos(){
+        return $this->morphToMany(Permisos::class, 'permitido');
+    }
+
+    public function rol()
+    {
+        return $this->belongsTo(Roles::class, 'roles_id');
+    }
+
+    public function getAccesoAttribute()
+    {
+        return $this->rol->permisos->map(function ($user) {
+            return $user->guardian;
+        });
     }
 }
