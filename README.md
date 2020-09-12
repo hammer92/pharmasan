@@ -18,6 +18,9 @@ docker-compose build
 
 docker-compose up -d
 
+docker-compose exec app compose install
+docker-compose exec vueserver npm install
+
 
 ```
 
