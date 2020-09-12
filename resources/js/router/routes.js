@@ -21,5 +21,9 @@ export default [
       { path: 'password', name: 'settings.password', component: page('settings/password.vue') }
     ] },
 
+  { path: '/cliente', name: 'cliente', component: page('cliente/index.vue') },
+  { path: '/usuario', name: 'usuario', component: page('usuario/index.vue') },
+  { path: '/reporte', name: 'reporte', component: page('reporte/index.vue') },
+
   { path: '*', component: page('errors/404.vue') }
 ]

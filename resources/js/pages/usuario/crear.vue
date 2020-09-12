@@ -12,14 +12,14 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 id="exampleModalLabel" class="modal-title">
-                {{ $t('modal_crear_cliente') }}
+                {{ $t('modal_crear_usuario') }}
               </h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form-cliente :form="form" />
+              <form-usuario :form="form" />
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -37,25 +37,26 @@
 </template>
 
 <script>
-import FormCliente from './form'
+import FormUsuario from './form'
 import Form from 'vform'
 import $ from 'jquery'
 
 export default {
-  name: 'CrearCliente',
-  components: { FormCliente },
+  name: 'CrearUsuario',
+  components: { FormUsuario },
   data: () => ({
     form: new Form({
-      documento: '',
-      correo: '',
-      direccion: '',
-      nombre: ''
+      name: '',
+      email: '',
+      roles_id: '',
+      password: '',
+      password_confirmation: ''
     })
   }),
   methods: {
     async submit () {
       // Submit the form.
-      await this.form.submit('post', '/api/clientes', { notLoader: true })
+      await this.form.submit('post', '/api/usuarios', { notLoader: true })
       $('#exampleModal').modal('hide')
       this.$emit('save')
     }

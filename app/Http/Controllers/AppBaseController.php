@@ -21,6 +21,10 @@ class AppBaseController extends Controller
     {
         return Response::json(ResponseUtil::makeError($error), $code);
     }
+    public function sendValidate($error, $code = 422)
+    {
+        return Response::json($error, $code);
+    }
 
     public function sendSuccess($message)
     {

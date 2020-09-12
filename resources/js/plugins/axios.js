@@ -1,9 +1,11 @@
 import axios from 'axios'
+import Vue from 'vue'
 import store from '~/store'
 import router from '~/router'
 import Swal from 'sweetalert2'
 import i18n from '~/plugins/i18n'
 
+let loader = null
 // Request interceptor
 axios.interceptors.request.use(request => {
   const token = store.getters['auth/token']
@@ -17,13 +19,23 @@ axios.interceptors.request.use(request => {
   }
 
   // request.headers['X-Socket-Id'] = Echo.socketId()
+  const getloader = !request.notLoader
+  if (getloader) {
+    loader = Vue.$loading.show({
+      loader: 'dots'
+    })
+  }
 
   return request
 })
 
 // Response interceptor
-axios.interceptors.response.use(response => response, error => {
-  const { status } = error.response
+axios.interceptors.response.use(response => {
+  if (loader !== null) loader.hide(); loader = null
+  return { status: response.status, ...response.data }
+}, error => {
+  if (loader !== null) loader.hide(); loader = null
+  const { status, data } = error.response
 
   if (status >= 500) {
     Swal.fire({
@@ -51,5 +63,5 @@ axios.interceptors.response.use(response => response, error => {
     })
   }
 
-  return Promise.reject(error)
+  return Promise.reject({ status, message: data, ...error })
 })

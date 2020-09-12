@@ -4,9 +4,9 @@
 namespace App\Repositories;
 
 
-use App\User;
+use App\Medicamento;
 
-class UserRepository extends BaseRepository
+class MedicamentoRepository extends BaseRepository
 {
     public function getFieldsSearchable()
     {
@@ -15,6 +15,6 @@ class UserRepository extends BaseRepository
 
     public function model()
     {
-        return User::class;
+        return Medicamento::class;
     }
 }

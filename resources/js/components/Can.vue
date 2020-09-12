@@ -10,9 +10,7 @@ export default {
   props: ['permiso'],
   computed: {
     can () {
-      const superuser = this._.get(this.$store.getters['auth/user'], 'is_superuser', false)
-      const permiso = this.$store.getters['auth/permisos'].includes(this.permiso)
-      return superuser || permiso
+      return this.$store.getters['auth/acceso'].includes(this.permiso)
     }
   }
 }

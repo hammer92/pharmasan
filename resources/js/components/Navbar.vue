@@ -12,9 +12,18 @@
       <div id="navbarToggler" class="collapse navbar-collapse">
         <ul class="navbar-nav">
           <locale-dropdown />
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li> -->
+
+          <li class="nav-item">
+            <router-link :to="{ name: 'cliente' }" class="nav-link" active-class="active" v-text="'Cliente'"/>
+          </li>
+
+          <li class="nav-item">
+            <router-link :to="{ name: 'usuario' }" class="nav-link" active-class="active" v-text="'Usuario'"/>
+          </li>
+
+          <li class="nav-item">
+            <router-link :to="{ name: 'reporte' }" class="nav-link" active-class="active" v-text="'Reporte'"/>
+          </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">

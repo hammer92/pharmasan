@@ -30,5 +30,36 @@
   "password_updated": "¡Tu contraseña ha sido actualizada!",
   "new_password": "Nueva Contraseña",
   "login_with": "Iniciar Sesión con",
-  "register_with": "Registro con"
+  "register_with": "Registro con",
+
+  "fechavencimiento": "Vencimiento",
+  "registrosanitario": "Registro Sanitario",
+  "titular": "Titular",
+  "producto": "Producto",
+  "expediente": "Expediente",
+  "titulo_reporte_medicamento": "Reporte Medicamento",
+  "exportar": "Exportar",
+
+  "roles_id": "Roles",
+  "eliminar": "Eliminar",
+  "editar": "Editar",
+  "acciones": "Acciones",
+  "rol": "Rol",
+  "correo": "Correo",
+  "nombre": "Nombre",
+  "titulo_crear_usuario": "Usuario",
+  "guardar": "Guardar",
+  "cerrar": "Cerrar",
+  "modal_crear_usuario": "Crear Usuario",
+  "modal_editar_usuario": "Editar Usuario",
+  "actualizar": "Actualizar",
+  "crear": "Crear",
+
+  "direccion": "Direccion",
+  "documento": "Documento",
+  "titulo_crear_cliente": "Cliente",
+  "modal_crear_cliente": "Crear Cliente",
+  "modal_editar_cliente": "Editar Cliente"
+
+
 }

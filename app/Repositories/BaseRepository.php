@@ -132,11 +132,13 @@ abstract class BaseRepository
      */
     public function create($input)
     {
-        $model = $this->model->newInstance($input);
-
-        $model->save();
-
-        return $model;
+        try {
+            $model = $this->model->newInstance($input);
+            $model->save();
+            return $model;
+        } catch (\Exception $e) {
+            throw new \Exception('Error al crear');
+        }
     }
 
     /**

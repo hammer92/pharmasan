@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\ClienteRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ClienteController extends AppBaseController
 {
@@ -39,13 +40,16 @@ class ClienteController extends AppBaseController
     public function store(Request $request)
     {
         return $this->try(function () use ($request) {
-            $this->validate($request, [
+            $validator = Validator::make($request->all(), [
                 'documento' => 'required|max:255',
                 'nombre' => 'required|max:255',
-                'correo' => 'required|email|max:255|unique:users',
+                'correo' => 'required|email|max:255',
                 'direccion' => 'required|max:255',
             ]);
 
+            if ($validator->fails()) {
+                return $this->sendValidate($validator->errors());
+            }
             $data = $this->clienteRepository->create($request->all());
             return $this->sendResponse($data, 'store Cliente');
         });
@@ -75,15 +79,19 @@ class ClienteController extends AppBaseController
     public function update(Request $request, $id)
     {
         return $this->try(function () use ($request, $id) {
-            $this->validate($request, [
+            $validator = Validator::make($request->all(), [
                 'documento' => 'required|max:255',
                 'nombre' => 'required|max:255',
-                'correo' => 'required|email|max:255|unique:users',
+                'correo' => 'required|email|max:255',
                 'direccion' => 'required|max:255',
             ]);
 
-            $data = $this->clienteRepository->update($request->all(), $id);
-            return $this->sendResponse($data, 'store Cliente');
+            if ($validator->fails()) {
+                return $this->sendValidate($validator->errors());
+            }
+
+            $data = $this->clienteRepository->update($request->only(['documento', 'nombre', 'correo', 'direccion']), $id);
+            return $this->sendResponse($data, 'update Cliente');
         });
     }
 
@@ -96,7 +104,7 @@ class ClienteController extends AppBaseController
     public function destroy($id)
     {
         return $this->try(function () use ($id){
-            $data = $this->clienteRepository->delete($id);
+            $this->clienteRepository->delete($id);
             return $this->sendSuccess('destroy Cliente');
         });
     }

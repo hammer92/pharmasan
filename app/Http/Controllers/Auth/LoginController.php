@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Exceptions\VerifyEmailException;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AppBaseController;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
-class LoginController extends Controller
+class LoginController extends AppBaseController
 {
     use AuthenticatesUsers;
 
@@ -60,11 +60,11 @@ class LoginController extends Controller
         $token = (string) $this->guard()->getToken();
         $expiration = $this->guard()->getPayload()->get('exp');
 
-        return response()->json([
+        return $this->sendResponse([
             'token' => $token,
             'token_type' => 'bearer',
             'expires_in' => $expiration - time(),
-        ]);
+        ], '');
     }
 
     /**

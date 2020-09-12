@@ -12,7 +12,8 @@ export const state = {
 export const getters = {
   user: state => state.user,
   token: state => state.token,
-  check: state => state.user !== null
+  check: state => state.user !== null,
+  acceso: state => state.user.acceso || []
 }
 
 // mutations
@@ -51,9 +52,9 @@ export const actions = {
 
   async fetchUser ({ commit }) {
     try {
-      const { data } = await axios.get('/api/user')
+      const { data } = await axios.get('/api/user', { notLoader: true })
 
-      commit(types.FETCH_USER_SUCCESS, { user: data.data })
+      commit(types.FETCH_USER_SUCCESS, { user: data })
     } catch (e) {
       commit(types.FETCH_USER_FAILURE)
     }
