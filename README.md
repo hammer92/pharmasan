@@ -1,3 +1,35 @@
+## Prueba
+Realizar una aplicación en Laravel que permita:
+
+● Inicio de sesión
+
+● Registro de usuarios
+
+● Actualización de usuarios
+
+● Búsqueda de usuarios
+
+● Eliminación de usuarios
+
+● El inicio de sesión debe permitir, que el logueo se realice como rol administrador
+o vendedor.
+
+● El rol administrador debe poder realizar toda la administración de usuarios
+(creación, actualización y eliminación) y clientes (creación, actualización y
+eliminación).
+
+● El rol vendedor debe poder realizar la creación, actualización y eliminación de
+clientes (nombre, documento, correo, dirección)
+
+● El rol de administrador y vendedor agregar un módulo de reportes donde liste
+los artículos de medicamentos (Paginados) del Invima anexos en el correo.
+
+● Que pueda realizar descarga JSON los registros en formato (CSV for Excel)
+
+● Cerrar sesión
+
+● Validaciones de permisos por rol.
+
 ## Features
 
 - Laravel 7
