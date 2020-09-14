@@ -55,7 +55,7 @@ configurar datos de conexion y crear base de datos pharmasan
 php artisan migrate
 php artisan db:seed 
 
-si hay errores de memoria en el camando  db:seed ir al archivo 
+si hay errores de memoria en el comando  db:seed ir al archivo 
 php.ini y aumentar el valos de memory_limit=10240M
 
 npm run dev
