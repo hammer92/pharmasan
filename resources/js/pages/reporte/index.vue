@@ -73,12 +73,12 @@ export default {
       listado: {
         current_page: 1,
         data: [],
-        first_page_url: 'http://localhost/api/medicamento?page=1',
+        first_page_url: '/api/medicamento?page=1',
         from: 1,
         last_page: 0,
-        last_page_url: 'http://localhost/api/medicamento?page=11516',
-        next_page_url: 'http://localhost/api/medicamento?page=2',
-        path: 'http://localhost/api/medicamento',
+        last_page_url: '/api/medicamento?page=11516',
+        next_page_url: '/api/medicamento?page=2',
+        path: '/api/medicamento',
         per_page: 10,
         prev_page_url: null,
         to: 0,
@@ -100,7 +100,7 @@ export default {
     },
     async exportar () {
       try {
-        const { data } = await axios('http://localhost/api/medicamento/export')
+        const { data } = await axios('/api/medicamento/export')
         const url = window.URL.createObjectURL(new Blob([data]))
         const link = document.createElement('a')
         link.href = url
