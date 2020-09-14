@@ -58,7 +58,7 @@ php artisan db:seed
 si hay errores de memoria en el camando  db:seed ir al archivo 
 php.ini y aumentar el valos de memory_limit=10240M
 
-
+npm run dev
 
 ```
 
